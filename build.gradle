@@ -13,5 +13,6 @@ dependencies {
     compile project(':eurekaserver')
     compile project(':gateway')
     compile project(':contentmanagement')
+    compile project(':configserver')
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
