@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: 'ConfigServer'
+  cloud:
+    config:
+      discovery:
+        enabled: true

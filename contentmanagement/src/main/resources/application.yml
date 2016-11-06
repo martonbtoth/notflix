@@ -1,6 +1,11 @@
 spring:
   application:
     name: 'ContentManagementService'
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: 'ConfigServer'
 eureka:
   client:
     serviceUrl:
