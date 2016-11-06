@@ -5,3 +5,8 @@ spring:
     config:
       discovery:
         enabled: true
+      server:
+        git:
+          uri: '/home/totlol/Egyetem/notflix-config'
+server:
+  port: 8888
