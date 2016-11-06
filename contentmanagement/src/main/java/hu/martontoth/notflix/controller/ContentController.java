@@ -1,6 +1,5 @@
 package hu.martontoth.notflix.controller;
 
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -16,9 +15,12 @@ public class ContentController {
     @Autowired
     private Environment environment;
 
+    @Value("${stuff}")
+    private String stuff;
+
     @RequestMapping("/")
     public String example() {
-        return "Ahoy from port " + environment.getProperty("local.server.port") + "!";
+        return "Ahoy from port " + environment.getProperty("local.server.port") + "!\nCurrent stuff value is " + stuff;
     }
 
 }
