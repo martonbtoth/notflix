@@ -9,4 +9,4 @@ server:
   port: 8070
 zuul:
   routes:
-    ContentManagementService: 'cms/**'
+    ContentService: 'cms/**'

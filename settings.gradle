@@ -1,7 +1,8 @@
 rootProject.name = 'notflix'
 
 include 'eurekaserver'
-include 'contentmanagement'
+include 'contentservice'
 include 'gateway'
 include 'configserver'
+include 'userservice'
 

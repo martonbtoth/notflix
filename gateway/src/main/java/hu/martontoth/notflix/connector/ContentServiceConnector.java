@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by Márton Tóth
  */
-@FeignClient("ContentManagementService")
-public interface ContentManagementConnector {
+@FeignClient("ContentService")
+public interface ContentServiceConnector {
 
     @RequestMapping(method = RequestMethod.GET, value = "/")
     String getAhoy();
