@@ -22,7 +22,7 @@ public class ContentController {
     @RequestMapping("/")
     public String example() {
         final String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return "Ahoy " + username + " from port " + environment.getProperty("local.server.port") + "!\nCurrent stuff value is " + stuff;
+        return "Ahoy " + username + " from " + environment.getProperty("spring.application.name") + ":" + environment.getProperty("server.port") + "!\nCurrent stuff value is " + stuff;
     }
 
 }
