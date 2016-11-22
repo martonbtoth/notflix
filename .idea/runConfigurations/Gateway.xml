@@ -1,0 +1,22 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Gateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="hu.martontoth.notflix.GatewayApplication" />
+    <option name="VM_PARAMETERS" value="-Xmx128M" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <module name="gateway_main" />
+    <envs />
+    <method>
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/gateway/src/main/resources/package.json" />
+        <command value="run-script" />
+        <scripts>
+          <script value="build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

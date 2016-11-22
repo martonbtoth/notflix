@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient("UserService")
 public interface UserServiceConnector {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users/{name}")
+    @RequestMapping(method = RequestMethod.GET, value = "/internal/{name}")
     NotflixUser getUserByName(@PathVariable("name") String username);
 
 }
