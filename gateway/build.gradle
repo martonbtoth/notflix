@@ -33,6 +33,7 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-zuul')
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile('org.springframework.session:spring-session')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -10,3 +10,6 @@ server:
 zuul:
   routes:
     ContentService: 'cms/**'
+    UserService: 'users/**'
+  prefix: '/api'
+  ignored-patterns: 'internal/**'

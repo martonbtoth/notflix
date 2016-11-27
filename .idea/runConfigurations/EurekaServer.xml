@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="EurekaServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="hu.martontoth.notflix.EurekaServerApplication" />
+    <option name="VM_PARAMETERS" value="-Xmx52M" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <module name="eurekaserver_main" />
+    <envs />
+    <method />
+  </configuration>
+</component>

@@ -3,6 +3,7 @@ package hu.martontoth.notflix.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,8 @@ public class ContentController {
 
     @RequestMapping("/")
     public String example() {
-        return "Ahoy from port " + environment.getProperty("local.server.port") + "!\nCurrent stuff value is " + stuff;
+        final String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return "Ahoy " + username + " from " + environment.getProperty("spring.application.name") + ":" + environment.getProperty("server.port") + "!\nCurrent stuff value is " + stuff;
     }
 
 }
