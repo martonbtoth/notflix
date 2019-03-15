@@ -1,0 +1,9 @@
+.block {
+  margin: 0 40px;
+
+  display: flex;
+
+  &.vertical {
+    flex-direction: column;
+  }
+}

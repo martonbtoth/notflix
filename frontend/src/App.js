@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.scss';
-import {Preview} from "./components/Preview/Preview";
-import {PreviewRow} from "./components/PreviewRow/PreviewRow";
+import Header from "./components/Header/Header";
+import HomeContainer from "./components/HomeContainer/HomeContainer";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <PreviewRow >
-          <Preview title="A botkormanyos" />
-          <Preview title="A botkormanyos 2" />
-          <Preview title="A botkormanyos ujra lecsap" />
-        </PreviewRow>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <Header />
+                <HomeContainer />
+            </div>
+        );
+    }
 }
 
 export default App;

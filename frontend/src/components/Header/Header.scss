@@ -1,0 +1,14 @@
+.header {
+
+  $padding: 16px;
+  $height: 68px;
+
+  padding: $padding 0;
+  height: $height;
+  width: 100%;
+
+  >.block>img {
+    height: $height - $padding * 2;
+    margin-right: 25px;
+  }
+}
