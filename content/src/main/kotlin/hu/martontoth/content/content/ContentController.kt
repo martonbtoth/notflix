@@ -27,4 +27,16 @@ class ContentController(
             ResponseEntity.notFound().build()
         }
     }
+
+    @GetMapping("{id}/stream")
+    fun stream(@PathVariable("id") id: Long): ResponseEntity<Mono<FileSystemResource>> {
+        val fileSystemResource = FileSystemResource("$contentPath/content/$id/stream.m4v")
+        return if (fileSystemResource.exists()) {
+            ResponseEntity.ok()
+                    .header("Content-Type", "video/mp4")
+                    .body(Mono.just(fileSystemResource))
+        } else {
+            ResponseEntity.notFound().build()
+        }
+    }
 }
