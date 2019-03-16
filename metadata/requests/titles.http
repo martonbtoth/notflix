@@ -1,0 +1,32 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+GET http://localhost:8888/api/titles
+Accept: application/json
+
+###
+
+POST http://localhost:8080/api/titles
+Content-Type: application/json
+
+{
+  "title": "Star Wars: The Force Awakens",
+  "description": "Three decades after the Empire's defeat, a new threat arises in the militant First Order. Stormtrooper defector Finn and the scavenger Rey are caught up in the Resistance's search for the missing Luke Skywalker."
+}
+
+###
+
+POST http://localhost:8080/api/titles
+Content-Type: application/json
+
+{
+  "title": "Star Wars: The Last Jedi",
+  "description": "Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares for battle with the First Order."
+}
+
+
+###
