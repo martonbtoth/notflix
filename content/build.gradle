@@ -20,6 +20,8 @@ dependencies {
 	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 }
@@ -36,4 +38,18 @@ compileTestKotlin {
 		freeCompilerArgs = ['-Xjsr305=strict']
 		jvmTarget = '1.8'
 	}
+}
+
+bootJar {
+	archiveName = 'content.jar'
+}
+
+task dockerClean(type: Exec) {
+	commandLine 'docker', 'rmi', '-f', "martontoth/notflix-${project.name}:${project.version}"
+}
+
+task dockerBuild(type: Exec) {
+	commandLine 'docker', 'build', '.' ,
+			'-t', "martontoth/notflix-${project.name}:${project.version}",
+			'-t', "martontoth/notflix-${project.name}:latest"
 }

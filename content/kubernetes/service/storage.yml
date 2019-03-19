@@ -1,0 +1,29 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: content-pv-volume
+  labels:
+    type: local
+    app: content
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/srv/notflix/content"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: content-pv-claim
+  labels:
+    app: content
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi

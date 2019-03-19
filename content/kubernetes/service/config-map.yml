@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: content-config
+  labels:
+    app: content
+data:
+  CONTENT_PATH: "/content"
+  SERVER_PORT: "8080"

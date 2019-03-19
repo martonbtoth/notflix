@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: metadata
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: metadata
+    spec:
+      containers:
+        - name: metadata
+          image: martontoth/notflix-metadata:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: metadata-config
+          resources:
+            limits:
+              memory: 256Mi

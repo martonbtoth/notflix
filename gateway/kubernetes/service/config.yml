@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-config
+  labels:
+    app: gateway
+data:
+  SERVER_PORT: "8080"
+  CONTENT_URI: "http://content:8080/"
+  METADATA_URI: "http://metadata:8080/"

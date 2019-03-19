@@ -42,3 +42,17 @@ compileTestKotlin {
 		jvmTarget = '1.8'
 	}
 }
+
+bootJar {
+	archiveName = 'metadata.jar'
+}
+
+task dockerClean(type: Exec) {
+	commandLine 'docker', 'rmi', '-f', "martontoth/notflix-${project.name}:${project.version}"
+}
+
+task dockerBuild(type: Exec) {
+	commandLine 'docker', 'build', '.' , 
+			'-t', "martontoth/notflix-${project.name}:${project.version}",
+			'-t', "martontoth/notflix-${project.name}:latest"
+}

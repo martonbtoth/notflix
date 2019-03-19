@@ -23,6 +23,8 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -44,4 +46,18 @@ compileTestKotlin {
 		freeCompilerArgs = ['-Xjsr305=strict']
 		jvmTarget = '1.8'
 	}
+}
+
+bootJar {
+	archiveName = 'gateway.jar'
+}
+
+task dockerClean(type: Exec) {
+	commandLine 'docker', 'rmi', '-f', "martontoth/notflix-${project.name}:${project.version}"
+}
+
+task dockerBuild(type: Exec) {
+	commandLine 'docker', 'build', '.' ,
+			'-t', "martontoth/notflix-${project.name}:${project.version}",
+			'-t', "martontoth/notflix-${project.name}:latest"
 }

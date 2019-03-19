@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: content
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: content
+    spec:
+      containers:
+        - name: content
+          image: martontoth/notflix-content:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: content-config
+          volumeMounts:
+            - mountPath: /content
+              name: content-volume
+          resources:
+            limits:
+              memory: 256Mi
+      volumes:
+        - name: content-volume
+          persistentVolumeClaim:
+            claimName: content-pv-claim

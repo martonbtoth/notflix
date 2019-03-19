@@ -18,7 +18,7 @@ class ContentController(
 
     @GetMapping("{id}/thumbnail")
     fun thumbnail(@PathVariable("id") id: Long): ResponseEntity<Mono<FileSystemResource>> {
-        val fileSystemResource = FileSystemResource("$contentPath/content/$id/thumbnail.jpg")
+        val fileSystemResource = FileSystemResource("$contentPath/$id/thumbnail.jpg")
         return if (fileSystemResource.exists()) {
             ResponseEntity.ok()
                     .header("Content-Type", "image/jpeg")
@@ -30,7 +30,7 @@ class ContentController(
 
     @GetMapping("{id}/stream")
     fun stream(@PathVariable("id") id: Long): ResponseEntity<Mono<FileSystemResource>> {
-        val fileSystemResource = FileSystemResource("$contentPath/content/$id/stream.m4v")
+        val fileSystemResource = FileSystemResource("$contentPath/$id/stream.m4v")
         return if (fileSystemResource.exists()) {
             ResponseEntity.ok()
                     .header("Content-Type", "video/mp4")
