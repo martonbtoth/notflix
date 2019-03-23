@@ -8,11 +8,13 @@ import org.springframework.context.annotation.Configuration
 
 
 @Configuration
-class Beans(
+class Routes(
         @Value("\${content.uri}")
         private val contentUri: String,
         @Value("\${metadata.uri}")
-        private val metadataUri: String
+        private val metadataUri: String,
+        @Value("\${auth.uri}")
+        private val authUri: String
 ) {
 
     @Bean
@@ -22,6 +24,8 @@ class Beans(
                 { it.path("/api/titles").uri(metadataUri) }
                 .route("content")
                 { it.path("/api/content/**").uri(contentUri) }
+                .route("auth")
+                { it.path("/api/login", "/api/profile", "/api/register").uri(authUri) }
                 .build()
     }
 }

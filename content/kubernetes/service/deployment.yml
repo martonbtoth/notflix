@@ -23,7 +23,7 @@ spec:
               name: content-volume
           resources:
             limits:
-              memory: 256Mi
+              memory: 512Mi
       volumes:
         - name: content-volume
           persistentVolumeClaim:

@@ -8,3 +8,4 @@ data:
   SERVER_PORT: "8080"
   CONTENT_URI: "http://content:8080/"
   METADATA_URI: "http://metadata:8080/"
+  AUTH_URI: "http://auth:8080/"
