@@ -1,6 +1,7 @@
-import { combineReducers } from "redux";
-import { loadTitles } from "./reducers";
+import {combineReducers} from "redux";
+import {authenticationReducer, loadTitles} from "./reducers";
 
 export default combineReducers({
-    titles: loadTitles
+    titles: loadTitles,
+    authentication: authenticationReducer
 })

@@ -3,7 +3,6 @@ import {Preview} from "../../Preview/Preview";
 import Block from "../../Block/Block";
 import React, {Component} from "react";
 import Header from "../../Header/Header";
-import {BrowserRouter as Router} from "react-router-dom";
 
 class Home extends Component {
 
@@ -16,7 +15,7 @@ class Home extends Component {
                     <PreviewRow title="All movies">
                         {
                             titles.map(title => (
-                                <Preview title={title}/>
+                                <Preview key={title.id} title={title}/>
                             ))
                         }
                     </PreviewRow>

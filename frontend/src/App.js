@@ -1,21 +1,34 @@
 import React, {Component} from 'react';
 import './App.scss';
-import Header from "./components/Header/Header";
 import HomeContainer from "./components/HomeContainer/HomeContainer";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import {BrowserRouter as Router, Route} from "react-router-dom"
 import PlayerContainer from "./components/PlayerContainer/PlayerContainer";
+import {login} from "./redux/actions";
+import {connect} from "react-redux";
+import LoginContainer from "./components/LoginContainer/LoginContainer";
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <Router>
-                    <Route path="/" exact component={HomeContainer} />
-                    <Route path="/play/:id" component={PlayerContainer} />
-                </Router>
+                {this.props.authentication.token === null ? <LoginContainer/> :
+                    (<Router>
+                        <Route path="/" exact component={HomeContainer}/>
+                        <Route path="/play/:id" component={PlayerContainer}/>
+                    </Router>)
+                }
             </div>
         );
     }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    authentication: state.authentication
+});
+
+const mapDispatchToProps = dispatch => ({
+    login: (username, password) => dispatch(login(username, password))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
