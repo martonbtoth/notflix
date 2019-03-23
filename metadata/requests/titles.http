@@ -10,6 +10,12 @@ Accept: application/json
 
 ###
 
+GET http://localhost:8888/api/titles
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3Rsb2wiLCJhdXRoIjpbIlVTRVIiXSwiaWF0IjoxNTUzMzU4ODU1LCJleHAiOjE1NTMzODA0NTV9.IaHYt80htBpV-t2DxAuE8YcGATH5o1QRyARsIEX8Ggo
+
+###
+
 POST http://tegla.home:32538/api/titles
 Content-Type: application/json
 
