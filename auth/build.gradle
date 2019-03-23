@@ -47,7 +47,7 @@ compileTestKotlin {
 }
 
 bootJar {
-	archiveName = 'content.jar'
+	archiveName = 'auth.jar'
 }
 
 task dockerClean(type: Exec) {

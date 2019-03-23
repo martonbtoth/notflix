@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  labels:
+    app: auth
+data:
+  SERVER_PORT: "8080"
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-auth:5432/auth
+  SPRING_DATASOURCE_USERNAME: auth
+  SPRING_DATASOURCE_PASSWORD: auth

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-auth
+spec:
+  selector:
+    app: postgres-auth
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  type: ClusterIP

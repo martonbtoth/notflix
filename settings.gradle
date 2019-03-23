@@ -1,3 +1,4 @@
 include ':content'
 include ':gateway'
 include ':metadata'
+include ':auth'

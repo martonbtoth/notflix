@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: postgres-auth
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres-auth
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:11.2
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-auth-config
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgredb
+          resources:
+            limits:
+              memory: 512Mi
+      volumes:
+        - name: postgredb
+          persistentVolumeClaim:
+            claimName: postgres-auth-pv-claim

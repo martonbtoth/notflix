@@ -2,10 +2,12 @@ task build() {
     dependsOn ':metadata:dockerBuild'
     dependsOn ':content:dockerBuild'
     dependsOn ':gateway:dockerBuild'
+    dependsOn ':auth:dockerBuild'
 }
 
 task clean() {
     dependsOn ':metadata:dockerClean'
     dependsOn ':content:dockerClean'
     dependsOn ':gateway:dockerClean'
+    dependsOn ':auth:dockerClean'
 }
