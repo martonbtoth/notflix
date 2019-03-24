@@ -1,4 +1,4 @@
-package hu.martontoth.auth.profile
+package hu.martontoth.metadata.external
 
 
 data class Profile(

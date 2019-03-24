@@ -2,12 +2,10 @@ package hu.martontoth.auth.security
 
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.authority.SimpleGrantedAuthority
-import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Component
 import java.util.*
 import javax.servlet.http.HttpServletRequest
@@ -18,15 +16,14 @@ class JwtTokenProvider(
         @Value("\${jwt.secret}")
         private val secretKey: String,
         @Value("\${jwt.expiry:21600000}")
-        private val expiry: Long,
-        @Autowired
-        private val userDetailsService: UserDetailsService
+        private val expiry: Long
 ) {
 
-    fun createToken(username: String, roles: List<String>): String {
+    fun createToken(notflixUserDetails: NotflixUserDetails): String {
 
-        val claims = Jwts.claims().setSubject(username)
-        claims["auth"] = roles
+        val claims = Jwts.claims().setSubject(notflixUserDetails.username)
+        claims["auth"] = notflixUserDetails.authorities.map { it.authority }
+        claims["id"] = notflixUserDetails.id
 
         val now = Date()
         val validity = Date(now.time + expiry)
@@ -42,10 +39,12 @@ class JwtTokenProvider(
     fun getAuthentication(token: String): Authentication {
         val parsedToken = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token)
         return UsernamePasswordAuthenticationToken(
-                parsedToken.body.subject,
-                "",
-                (parsedToken.body["auth"] as List<String>)
-                        .map { SimpleGrantedAuthority(it) }
+                NotflixUserDetails(
+                        id = (parsedToken.body["id"] as Int).toLong(),
+                        username = parsedToken.body.subject,
+                        password = "",
+                        authorities = (parsedToken.body["auth"] as List<String>)
+                ), null, (parsedToken.body["auth"] as List<String>).map { SimpleGrantedAuthority(it) }
         )
     }
 

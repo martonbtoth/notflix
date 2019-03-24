@@ -1,10 +1,10 @@
 package hu.martontoth.auth.login
 
 import hu.martontoth.auth.security.JwtTokenProvider
+import hu.martontoth.auth.security.NotflixUserDetails
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Service
 
 
@@ -18,10 +18,7 @@ class LoginService(
 
     fun login(username: String, password: String): String {
         val authentication = authenticationManager.authenticate(UsernamePasswordAuthenticationToken(username, password))
-        return jwtTokenProvider.createToken(
-                (authentication.principal as User).username,
-                authentication.authorities.map { it.authority }
-        )
+        return jwtTokenProvider.createToken(authentication.principal as NotflixUserDetails)
     }
 
 }

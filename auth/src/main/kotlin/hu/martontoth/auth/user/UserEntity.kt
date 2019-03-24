@@ -9,5 +9,7 @@ class UserEntity(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long?,
         val username: String,
-        val password: String
+        val password: String,
+        @OneToMany(mappedBy = "user")
+        val userTitleProgress: List<UserTitleProgressEntity>
 )

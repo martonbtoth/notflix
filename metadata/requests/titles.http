@@ -12,7 +12,7 @@ Accept: application/json
 
 GET http://localhost:8888/api/titles
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3Rsb2wiLCJhdXRoIjpbIlVTRVIiXSwiaWF0IjoxNTUzMzU4ODU1LCJleHAiOjE1NTMzODA0NTV9.IaHYt80htBpV-t2DxAuE8YcGATH5o1QRyARsIEX8Ggo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJ0b250b3RoIiwiYXV0aCI6WyJVU0VSIl0sImlkIjoxLCJpYXQiOjE1NTM0NTc2NDgsImV4cCI6MTU1MzQ3OTI0OH0.W8mdSivsvPdfFJaslETQm4FkbQP_GQgboAQPska6EDE
 
 ###
 
