@@ -17,6 +17,10 @@
       margin-bottom: 0;
     }
 
+    &.error-message {
+      justify-content: left;
+      color: #d91927;
+    }
 
     display: flex;
     justify-content: center;
@@ -42,7 +46,7 @@
     height: 40px;
     width: 100%;
     color: white;
-    background-color: red;
+    background-color: #d91927;
     border: none;
     border-radius: 3px;
     padding: 8px;

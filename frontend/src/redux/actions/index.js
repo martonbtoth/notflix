@@ -6,7 +6,7 @@ const checkAuth = async (error) => {
 
 const createAuthHeader = (getState) => {
     return `Bearer ${getState().authentication.token}`;
-}
+};
 
 export const loadTitles = () => async (dispatch, getState) => {
     try {
@@ -29,14 +29,28 @@ export const loadTitles = () => async (dispatch, getState) => {
     }
 };
 
+export const logout = () => {
+    return {
+        type: "LOGOUT"
+    }
+};
+
 export const login = (username, password) => async (dispatch) => {
 
-    const response = await axios.post("/api/login", {username, password});
 
-    return dispatch({
-        type: "LOGGED_IN",
-        token: response.data.token
-    })
+    try {
+        const response = await axios.post("/api/login", {username, password});
+        return dispatch({
+            type: "LOGGED_IN",
+            token: response.data.token
+        })
+    } catch (e) {
+        return dispatch({
+            type: "LOGIN_FAILED"
+        })
+    }
+
+
 };
 
 

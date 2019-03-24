@@ -1,11 +1,21 @@
 .header-nav {
+  $padding: 16px;
+  $height: 68px;
+
   display: flex;
   align-items: center;
 
   color: whitesmoke;
 
+  img {
+    height: $height - $padding * 2;
+    margin-right: 25px;
+  }
+
   .header-item {
     margin-left: 20px;
     font-size: 14px;
+    cursor: pointer;
   }
+
 }

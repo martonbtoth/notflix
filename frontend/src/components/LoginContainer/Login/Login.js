@@ -5,7 +5,10 @@ class Login extends Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = {};
+        this.state = {
+            username: '',
+            password: ''
+        };
 
         this.onUsernameChange = this.onUsernameChange.bind(this);
         this.onPasswordChange = this.onPasswordChange.bind(this);
@@ -13,11 +16,11 @@ class Login extends Component {
     }
 
     onUsernameChange(e) {
-        this.state.username = e.target.value;
+        this.setState({username: e.target.value});
     }
 
     onPasswordChange(e) {
-        this.state.password = e.target.value;
+        this.setState({password: e.target.value});
     }
 
     onLogin(e) {
@@ -33,7 +36,7 @@ class Login extends Component {
             <div className="login" style={{height: window.innerHeight}}>
                 <div className="login-card">
                     <div className="row">
-                        <img src="/logo.png" />
+                        <img src="/logo.png"/>
                     </div>
                     <div className="row label">
                         Username
@@ -58,6 +61,11 @@ class Login extends Component {
                             onSubmit={this.onLogin}
                         />
                     </div>
+                    {
+                        this.props.authentication.loginAttemptFailed ?
+                            (<div className="row error-message">Could not log you in &#x1f937;&#x200d;</div>)
+                            : <div className="row error-message">&nbsp;</div>
+                    }
                     <div className="row">
                         <button onClick={this.onLogin}>
                             Login
