@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Table(name = "user_title_progress")
 @Entity
-public class UserTitleProgressEntity(
+data class UserTitleProgressEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long?,

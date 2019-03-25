@@ -55,6 +55,7 @@
     justify-content: center;
 
     padding: 15px;
+    margin: 0;
 
     .title {
       font-size: 16px;
@@ -67,6 +68,23 @@
       font-size: 12px;
       overflow: hidden;
 
+    }
+  }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    margin: 0;
+    padding: 0;
+
+    .progress-bar-progress {
+      background-color: #d91927;
+      height: 2px;
     }
   }
 }

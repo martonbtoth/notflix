@@ -25,3 +25,14 @@ GET http://localhost:8888/api/profile
 Accept: application/json
 
 ###
+
+POST http://localhost:8888/api/profile/progress
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJ0b250b3RoIiwiYXV0aCI6WyJVU0VSIl0sImlkIjoxLCJpYXQiOjE1NTM1NDg5NjQsImV4cCI6MTU1MzU3MDU2NH0.Pm3wlr7D265lJSNTmyoiiRflhTDW0EbNib5qjSyBr_g
+
+{
+  "titleId": 2,
+  "progress": 7500
+}
+
+###

@@ -1,4 +1,4 @@
-package hu.martontoth.metadata.movie
+package hu.martontoth.metadata.title
 
 import javax.persistence.*
 
@@ -9,5 +9,6 @@ class TitleEntity(
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long?,
         val title: String,
-        val description: String
+        val description: String,
+        val length: Long
 )

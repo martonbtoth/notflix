@@ -14,14 +14,19 @@ class UserService(
 
     fun getTitleProgressesForUser(userId: Long): List<UserTitleProgress> =
             userTitleProgressRepository.findByUserId(userId)
-                    .map {
-                        UserTitleProgress(
-                                userId = userId,
-                                titleId = it.titleId,
-                                progress = it.progress,
-                                watched = it.watched
-                        )
-                    }
+                    .map { map(it) }
+
+    fun setTitleProgressForUser(userId: Long, titleId: Long, progress: Long): UserTitleProgress {
+        val userTitleProgressEntity = userTitleProgressRepository.findByUserAndTitleId(userId, titleId)?.copy(progress = progress)
+                ?: UserTitleProgressEntity(
+                        id = null,
+                        titleId = titleId,
+                        progress = progress,
+                        user = userRepository.findById(userId).unwrap()!!,
+                        watched = false
+                )
+        return map(userTitleProgressRepository.save(userTitleProgressEntity))
+    }
 
     fun findUser(userId: Long): User? =
             userRepository.findById(userId).unwrap()?.let {
@@ -30,4 +35,12 @@ class UserService(
                         username = it.username
                 )
             }
+
+    private fun map(entity: UserTitleProgressEntity): UserTitleProgress =
+            UserTitleProgress(
+                    userId = entity.user.id!!,
+                    titleId = entity.titleId,
+                    progress = entity.progress,
+                    watched = entity.watched
+            )
 }

@@ -21,11 +21,11 @@ class Routes(
     fun routeLocator(builder: RouteLocatorBuilder): RouteLocator {
         return builder.routes()
                 .route("titles")
-                { it.path("/api/titles").uri(metadataUri) }
+                { it.path("/api/titles/**").uri(metadataUri) }
                 .route("content")
                 { it.path("/api/content/**").uri(contentUri) }
                 .route("auth")
-                { it.path("/api/login", "/api/profile", "/api/register").uri(authUri) }
+                { it.path("/api/login", "/api/profile/**", "/api/register").uri(authUri) }
                 .build()
     }
 }

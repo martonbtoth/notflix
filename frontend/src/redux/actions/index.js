@@ -36,8 +36,6 @@ export const logout = () => {
 };
 
 export const login = (username, password) => async (dispatch) => {
-
-
     try {
         const response = await axios.post("/api/login", {username, password});
         return dispatch({
@@ -49,8 +47,6 @@ export const login = (username, password) => async (dispatch) => {
             type: "LOGIN_FAILED"
         })
     }
-
-
 };
 
 
@@ -69,4 +65,24 @@ export const loadProfile = () => async (dispatch) => {
         type: "PROFILE_RESPONSE",
         profile: response.data
     });
+};
+
+export const resetPlayer = () => {
+    return {
+        type: 'RESET_PLAYER'
+    };
+};
+
+export const loadContentMetadata = (titleId) => async (dispatch, getState) => {
+    dispatch(resetPlayer());
+
+    const response = await axios.get(`/api/titles/${titleId}`,
+        {
+            headers: {"Authorization": createAuthHeader(getState)}
+        });
+
+    return dispatch({
+        type: 'PLAYING_CONTENT_METADATA_LOADED',
+        metadata: response.data
+    })
 };

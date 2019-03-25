@@ -12,3 +12,8 @@ data class ContentProgress(
         val progress: Long,
         val watched: Boolean
 )
+
+data class SetContentProgressRequest(
+        val titleId: Long,
+        val progress: Long
+)

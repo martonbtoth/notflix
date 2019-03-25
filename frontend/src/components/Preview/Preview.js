@@ -1,9 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './Preview.scss';
 import {Link} from "react-router-dom";
 
 export class Preview extends React.Component {
 
+    calculateProgress(title) {
+        return ((title.progress / title.length) * 100) + "%"
+    }
 
     render() {
         return (
@@ -20,6 +23,16 @@ export class Preview extends React.Component {
                             {this.props.title.description}
                         </div>
                     </div>
+                    {
+                        this.props.title.progress ?
+                            <div className="progress-bar">
+                                <div className="progress-bar-progress"
+                                     style={{width: this.calculateProgress(this.props.title)}}
+                                />
+                            </div>
+                            : null
+                    }
+
                 </div>
             </Link>
         );

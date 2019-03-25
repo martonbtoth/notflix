@@ -14,4 +14,10 @@ interface UserTitleProgressRepository : JpaRepository<UserTitleProgressEntity, L
             @Param("userId") userId: Long
     ): List<UserTitleProgressEntity>
 
+    @Query("SELECT u FROM UserTitleProgressEntity u WHERE u.user.id = :userId AND u.titleId = :titleId")
+    fun findByUserAndTitleId(
+            @Param("userId") userId: Long,
+            @Param("titleId") titleId: Long
+    ): UserTitleProgressEntity?
+
 }

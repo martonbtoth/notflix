@@ -29,3 +29,19 @@ export const authenticationReducer = (state = authenticationDefaultState, action
             return state;
     }
 };
+
+const playerDefaultState = {
+    status: "LOADING",
+    metadata: null
+};
+
+export const playerReducer = (state = playerDefaultState, action) => {
+    switch (action.type) {
+        case 'PLAYING_CONTENT_METADATA_LOADED':
+            return {status: 'LOADED', metadata: action.metadata};
+        case 'RESET_PLAYER':
+            return playerDefaultState;
+        default:
+            return state;
+    }
+};

@@ -1,0 +1,4 @@
+GET http://localhost:8888/api/content/1/thumbnail
+Accept: application/json
+
+###
