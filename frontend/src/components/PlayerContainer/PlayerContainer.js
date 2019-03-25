@@ -1,6 +1,6 @@
 import React from 'react';
 import Player from "./Player/Player";
-import {loadContentMetadata} from "../../redux/actions";
+import {loadContentMetadata, updateProgress} from "../../redux/actions";
 import {connect} from "react-redux";
 
 const PlayerContainer = (props) => (
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    loadContentMetadata: (id) => dispatch(loadContentMetadata(id))
+    loadContentMetadata: (id) => dispatch(loadContentMetadata(id)),
+    updateProgress: (titleId, progress) => dispatch(updateProgress(titleId, progress))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerContainer);

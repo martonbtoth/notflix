@@ -86,3 +86,12 @@ export const loadContentMetadata = (titleId) => async (dispatch, getState) => {
         metadata: response.data
     })
 };
+
+export const updateProgress = (titleId, progress) => async (dispatch, getState) => {
+    await axios.post("/api/profile/progress", {
+        titleId: titleId,
+        progress: progress
+    }, {
+        headers: {"Authorization": createAuthHeader(getState)}
+    })
+};

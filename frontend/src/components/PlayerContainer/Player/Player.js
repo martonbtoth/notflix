@@ -6,26 +6,31 @@ class Player extends Component {
 
     constructor(props, context) {
         super(props, context);
-        this.videoRef = React.createRef();
+        this.prevTimestamp = new Date().getTime();
+
+        this.onProgressChange = this.onProgressChange.bind(this)
     }
 
     componentDidMount() {
         this.props.loadContentMetadata(this.props.contentId);
     }
 
-    componentWillUnmount() {
-        if (this.videoRef.current && this.videoEventListener) {
-            this.videoRef.current.removeEventListener(this.videoEventListener);
+    onProgressChange(e) {
+        const progress = Math.floor(e.target.currentTime);
+        let currentTime = new Date().getTime();
+        if (currentTime - 2500 > this.prevTimestamp) {
+            this.prevTimestamp = currentTime;
+            this.props.updateProgress(this.props.contentId, progress);
         }
     }
 
     render() {
-        console.log("render");
         let {contentId, player} = this.props;
         return (
             <div className="player" style={{height: window.innerHeight}}>
                 {player.status === 'LOADED' ?
-                    <video autoPlay
+                    <video ref={(e) => e ? e.ontimeupdate = this.onProgressChange : null}
+                           autoPlay
                            controls
                            src={`/api/content/${contentId}/stream#t=${player.metadata.progress}`}
                     /> :
