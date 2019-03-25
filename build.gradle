@@ -11,3 +11,10 @@ task clean() {
     dependsOn ':gateway:dockerClean'
     dependsOn ':auth:dockerClean'
 }
+
+task push() {
+    dependsOn ':metadata:dockerPush'
+    dependsOn ':content:dockerPush'
+    dependsOn ':gateway:dockerPush'
+    dependsOn ':auth:dockerPush'
+}

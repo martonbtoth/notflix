@@ -60,3 +60,7 @@ task dockerBuild(type: Exec) {
 			'-t', "martontoth/notflix-${project.name}:${project.version}",
 			'-t', "martontoth/notflix-${project.name}:latest"
 }
+
+task dockerPush(type: Exec) {
+	commandLine 'docker', 'push', "martontoth/notflix-${project.name}:latest"
+}

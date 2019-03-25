@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dockerBuild": "docker build . -t martontoth/notflix-frontend:latest"
+    "dockerBuild": "docker build . -t martontoth/notflix-frontend:latest",
+    "dockerPush": "docker push martontoth/notflix-frontend:latest"
   },
   "eslintConfig": {
     "extends": "react-app"
