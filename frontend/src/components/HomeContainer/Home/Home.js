@@ -3,13 +3,14 @@ import {Preview} from "../../Preview/Preview";
 import Block from "../../Block/Block";
 import React, {Component} from "react";
 import Header from "../../Header/Header";
+import './Home.scss'
 
 class Home extends Component {
 
     render() {
         const titles = this.props.titles || [];
         return (
-            <React.Fragment>
+            <div className="home">
                 <Header/>
                 <Block vertical>
                     <PreviewRow title="All movies">
@@ -20,7 +21,7 @@ class Home extends Component {
                         }
                     </PreviewRow>
                 </Block>
-            </React.Fragment>
+            </div>
         );
     }
 }

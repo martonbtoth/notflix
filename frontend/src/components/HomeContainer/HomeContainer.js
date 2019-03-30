@@ -11,10 +11,7 @@ class HomeContainer extends React.Component {
     }
 
     render() {
-        return ( <div>
-            <Home {...this.props} />
-            </div>
-        );
+        return <Home {...this.props} />;
     }
 }
 

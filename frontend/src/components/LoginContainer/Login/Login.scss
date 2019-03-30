@@ -1,7 +1,33 @@
 .login {
+  position: absolute;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  background-color: #141414;
+  z-index: 50;
+
+  &.animate-appear.animate-appear-active, &.animate-enter.animate-enter-active {
+    transform: translateY(0) !important;
+  }
+
+  &.animate-appear, &.animate-enter {
+    transition: transform 500ms ease-out;
+    transform: translateY(-1006px);
+  }
+
+  &.animate-leave .login-card {
+    opacity: 1;
+    pointer-events: none;
+    transition: all 500ms ease-out;
+    transform: scale(1);
+  }
+
+  &.animate-leave.animate-leave-active .login-card {
+    transform: scale(2);
+    opacity: 0;
+  }
 
   .login-card {
     background-color: rgba(0, 0, 0, .3);

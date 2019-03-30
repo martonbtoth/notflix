@@ -6,17 +6,26 @@ import PlayerContainer from "./components/PlayerContainer/PlayerContainer";
 import {login} from "./redux/actions";
 import {connect} from "react-redux";
 import LoginContainer from "./components/LoginContainer/LoginContainer";
+import {CSSTransitionGroup} from 'react-transition-group'
 
 class App extends Component {
     render() {
+        console.log(this.props);
         return (
             <div className="App">
-                {this.props.authentication.token === null ? <LoginContainer/> :
-                    (<Router>
-                        <Route path="/" exact component={HomeContainer}/>
-                        <Route path="/play/:id" component={PlayerContainer}/>
-                    </Router>)
-                }
+                <CSSTransitionGroup
+                    transitionName="animate"
+                    transitionAppear={true}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
+                >
+                    {!this.props.authentication.token ? <LoginContainer key={1}/> :
+                        (<Router key={5}>
+                            <Route path="/" exact component={HomeContainer}/>
+                            <Route path="/play/:id" component={PlayerContainer}/>
+                        </Router>)
+                    }
+                </CSSTransitionGroup>
             </div>
         );
     }

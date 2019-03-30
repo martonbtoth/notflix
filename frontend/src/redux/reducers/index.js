@@ -15,7 +15,7 @@ const authenticationDefaultState = {
 export const authenticationReducer = (state = authenticationDefaultState, action) => {
     switch (action.type) {
         case 'UNAUTHORIZED':
-            window.localStorage.token = null;
+            delete window.localStorage.token;
             return {...state, token: null, loginAttemptFailed: false};
         case 'LOGGED_IN':
             window.localStorage.token = action.token;
@@ -23,7 +23,7 @@ export const authenticationReducer = (state = authenticationDefaultState, action
         case 'LOGIN_FAILED':
             return {...state, loginAttemptFailed: true};
         case 'LOGOUT':
-            window.localStorage.token = null;
+            delete window.localStorage.token;
             return {...state, token: null, loginAttemptFailed: false};
         default:
             return state;
