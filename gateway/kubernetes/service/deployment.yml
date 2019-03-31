@@ -2,12 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: gateway
+  namespace: notflix
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: gateway
+        version: 1.0.0
     spec:
       containers:
         - name: gateway
@@ -15,6 +17,7 @@ spec:
           imagePullPolicy: "Always"
           ports:
             - containerPort: 8080
+              name: http
           envFrom:
             - configMapRef:
                 name: gateway-config

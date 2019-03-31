@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: metadata-debug
+  namespace: notflix
 spec:
   selector:
     app: metadata

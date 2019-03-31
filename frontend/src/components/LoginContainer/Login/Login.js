@@ -35,42 +35,44 @@ class Login extends Component {
         return (
             <div className="login" style={{height: window.innerHeight}}>
                 <div className="login-card">
-                    <div className="row">
-                        <img src="/logo.png"/>
-                    </div>
-                    <div className="row label">
-                        Username
-                    </div>
-                    <div className="row">
-                        <input
-                            type="text"
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.onUsernameChange}
-                            onSubmit={this.onLogin}
-                        />
-                    </div>
-                    <div className="row label">
-                        Password
-                    </div>
-                    <div className="row">
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.onPasswordChange}
-                            onSubmit={this.onLogin}
-                        />
-                    </div>
-                    {
-                        this.props.authentication.loginAttemptFailed ?
-                            (<div className="row error-message">Could not log you in &#x1f937;&#x200d;</div>)
-                            : <div className="row error-message">&nbsp;</div>
-                    }
-                    <div className="row">
-                        <button onClick={this.onLogin}>
-                            Login
-                        </button>
-                    </div>
+                    <form onSubmit={this.onLogin}>
+                        <div className="row">
+                            <img src="/logo.png"/>
+                        </div>
+                        <div className="row label">
+                            Username
+                        </div>
+                        <div className="row">
+                            <input
+                                type="text"
+                                name="username"
+                                value={this.state.username}
+                                onChange={this.onUsernameChange}
+                                onSubmit={this.onLogin}
+                            />
+                        </div>
+                        <div className="row label">
+                            Password
+                        </div>
+                        <div className="row">
+                            <input
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.onPasswordChange}
+                                onSubmit={this.onLogin}
+                            />
+                        </div>
+                        {
+                            this.props.authentication.loginAttemptFailed ?
+                                (<div className="row error-message">Could not log you in &#x1f937;&#x200d;</div>)
+                                : <div className="row error-message">&nbsp;</div>
+                        }
+                        <div className="row">
+                            <button onClick={this.onLogin}>
+                                Login
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
             </div>

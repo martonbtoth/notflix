@@ -63,3 +63,11 @@ task dockerBuild(type: Exec) {
 task dockerPush(type: Exec) {
 	commandLine 'docker', 'push', "martontoth/notflix-${project.name}:latest"
 }
+
+task kubeDeploy(type: Exec) {
+	commandLine 'kubectl', 'apply', "-f", "kubernetes", "--recursive"
+}
+
+task kubeClean(type: Exec) {
+	commandLine 'kubectl', 'delete', "-f", "kubernetes", "--recursive"
+}

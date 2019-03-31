@@ -2,6 +2,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: postgres-auth-pv-volume
+  namespace: notflix
   labels:
     type: local
     app: postgres-auth
@@ -18,6 +19,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgres-auth-pv-claim
+  namespace: notflix
   labels:
     app: postgres
 spec:

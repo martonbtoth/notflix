@@ -1,6 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
+  namespace: notflix
   name: gateway-debug
 spec:
   selector:

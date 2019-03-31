@@ -18,3 +18,17 @@ task push() {
     dependsOn ':gateway:dockerPush'
     dependsOn ':auth:dockerPush'
 }
+
+task kubeDeploy() {
+    dependsOn ':metadata:kubeDeploy'
+    dependsOn ':content:kubeDeploy'
+    dependsOn ':gateway:kubeDeploy'
+    dependsOn ':auth:kubeDeploy'
+}
+
+task kubeClean() {
+    dependsOn ':metadata:kubeClean'
+    dependsOn ':content:kubeClean'
+    dependsOn ':gateway:kubeClean'
+    dependsOn ':auth:kubeClean'
+}

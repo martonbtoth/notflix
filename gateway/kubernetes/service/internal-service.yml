@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: gateway
+  namespace: notflix
 spec:
   selector:
     app: gateway
@@ -9,4 +10,6 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+      name: http
   type: ClusterIP
+

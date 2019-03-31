@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: postgres-auth-external
+  namespace: notflix
 spec:
   selector:
     app: postgres-auth

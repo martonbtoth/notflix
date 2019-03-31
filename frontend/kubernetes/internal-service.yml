@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: frontend
+  namespace: notflix
 spec:
   selector:
     app: frontend

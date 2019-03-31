@@ -7,7 +7,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
-    "react-router-dom": "^4.4.0",
+    "react-router-dom": "4.4.0-beta.8",
     "react-scripts": "2.1.8",
     "react-transition-group": "^1.2.1",
     "redux": "^4.0.1",
@@ -20,7 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dockerBuild": "docker build . -t martontoth/notflix-frontend:latest",
-    "dockerPush": "docker push martontoth/notflix-frontend:latest"
+    "dockerPush": "docker push martontoth/notflix-frontend:latest",
+    "kubeDeploy": "kubectl apply -f kubernetes --recursive",
+    "kubeClean": "kubectl delete -f kubernetes --recursive"
   },
   "eslintConfig": {
     "extends": "react-app"
